@@ -1,0 +1,10 @@
+.venv/
+**/.env
+test_files/
+__pycache__/
+**/node_modules/
+**/*.spec.ts
+
+# ignore everything in the benchmark folder except the .gitkeep
+backend/benchmark/*
+!backend/benchmark/.gitkeep
