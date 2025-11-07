@@ -1,4 +1,4 @@
-# High-Performance OCR Document Extraction Pipeline
+# OCR Document Extraction Pipeline
 
 This project aims to apply architectural designs and optimization techniques to accelerate in-batch OCR document extraction, focusing on minimizing cost and latency while ensuring high accuracy.
 
@@ -44,6 +44,8 @@ Given an extraction task, the document is routed through a pipeline of different
 
 The process is designed to be cost-effective: the cheapest and fastest methods are tried first. Any fields that cannot be extracted are passed to the next, more expensive step in the funnel.
 
+<img width="1457" height="857" alt="image" src="https://github.com/user-attachments/assets/cb402ba5-1444-4ad4-aafa-3739340702fc" />
+
 ### First Step: Caching
 
 This is the cheapest and fastest extraction step. A cache hit can resolve a field "instantly," significantly reducing the load and cost of subsequent steps.  
@@ -65,9 +67,13 @@ The most significant time constraint in the pipeline is the asynchronous LLM API
 
 This queue allows the system to "work" on other document requests while waiting for the external API to respond. It also provides a crucial mechanism for rate limiting, ensuring the number of open promises respects the LLM provider's API limits.
 
+<img width="933" height="826" alt="image" src="https://github.com/user-attachments/assets/9ca3dbb8-2089-47af-94ec-a8ffa7ebce22" />
+
 ### Live Updates
 
 The frontend benchmark process features a **WebSocket** connection to provide live updates as documents are processed by the pipeline.
+
+<img width="932" height="802" alt="image" src="https://github.com/user-attachments/assets/8b6f5561-8275-4e22-aa2c-6eebe6420b7f" />
 
 ## Challenges Faced
 
